@@ -1,0 +1,28 @@
+from datetime import date
+
+try:
+    first_experiment_id = int(input("Bitte ID eingeben: "))
+except ValueError:
+    print("Nicht gültige ID, ID 1 wird verwendet")
+    first_experiment_id = 1  # Standardwert
+
+tests = []
+
+for i in range(10):
+    experiment = {
+        "id": first_experiment_id + i,
+        "versuchsleiter": "Hannah Neininger",
+        "erstelldatum": date.today()
+    }
+    tests.append(experiment)
+
+print("\nErste fünf Experimente:")
+for test in tests[:5]:
+    print(f"ID: {test['id']}, Leiter: {test['versuchsleiter']}, Datum: {test['erstelldatum']}")
+
+counter = 0
+for test in tests:
+    if test["id"] % 2 == 0:
+        counter += 1
+
+print(f"\nEs gibt {counter} Experimente mit gerader ID")
